@@ -1,0 +1,14 @@
+fastapi==0.136.0
+uvicorn[standard]==0.46.0
+python-multipart==0.0.26
+openai==2.32.0
+numpy==2.4.4
+aiofiles==25.1.0
+cryptography==46.0.7
+httpx==0.28.1
+qrcode==8.2
+markitdown[pdf,docx,pptx,xlsx,xls]==0.1.5
+watchdog==6.0.0
+llama-cpp-python>=0.3.0
+crawl4ai==0.8.6
+gitmem0

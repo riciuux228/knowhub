@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  knowhub:
+    build: .
+    container_name: knowhub
+    restart: unless-stopped
+    ports:
+      - "8765:8765"
+    volumes:
+      - knowhub_data:/app/backend/data
+      # Optionally, if you want to mount config directly from host:
+      # - ./backend/data/config.json:/app/backend/data/config.json
+    environment:
+      - TZ=Asia/Shanghai
+
+volumes:
+  knowhub_data:

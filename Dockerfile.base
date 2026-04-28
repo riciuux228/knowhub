@@ -1,0 +1,41 @@
+# ============================================
+# knowhub-base: 重量级依赖层（很少变动）
+# 只在 requirements.txt / gitmem0 / Dockerfile.base 变动时才需要重建
+# 构建命令: docker build -f Dockerfile.base -t knowhub-base .
+# ============================================
+
+FROM python:3.11-slim
+WORKDIR /app
+
+# 1. 系统依赖
+RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list.d/debian.sources && \
+    apt-get update && apt-get install -y --no-install-recommends \
+    gcc g++ libffi-dev cmake \
+    libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 \
+    libxkbcommon0 libxcomposite1 libxdamage1 libxrandr2 libgbm1 \
+    libpango-1.0-0 libcairo2 libasound2 libxshmfence1 \
+    && rm -rf /var/lib/apt/lists/*
+
+# 2. Python 依赖
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
+
+# 3. crawl4ai + Chromium
+RUN crawl4ai-setup
+
+# 4. CPU-only PyTorch + sentence-transformers
+RUN pip install --no-cache-dir torch sentence-transformers \
+    --index-url https://download.pytorch.org/whl/cpu \
+    --extra-index-url https://mirrors.aliyun.com/pypi/simple/
+
+# 5. gitmem0（从 PyPI 安装）
+RUN pip install --no-cache-dir gitmem0 -i https://mirrors.aliyun.com/pypi/simple/
+
+# 6. 预下载模型（hf-mirror 国内镜像）
+ENV HF_ENDPOINT=https://hf-mirror.com
+RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')"
+RUN mkdir -p /app/backend/qmd/models && \
+    python -c "import urllib.request; urllib.request.urlretrieve('https://hf-mirror.com/ggml-org/embeddinggemma-300M-GGUF/resolve/main/embeddinggemma-300M-Q8_0.gguf', '/app/backend/qmd/models/embeddinggemma-300M-Q8_0.gguf')"
+
+EXPOSE 8765
+VOLUME ["/app/backend/data"]
