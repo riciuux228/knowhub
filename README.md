@@ -343,7 +343,6 @@ python3 backend/main.py
 | POST | `/api/upload` | 上传文件（最大 200MB） |
 | POST | `/api/text` | 添加文本（最大 500K 字符） |
 | GET | `/api/items` | 列表/搜索（支持分页、筛选） |
-| GET | `/api/items/{id}` | 获取详情 |
 | PUT | `/api/items/{id}` | 更新 |
 | DELETE | `/api/items/{id}` | 删除 |
 | GET | `/api/items/{id}/related` | 相关知识 |
@@ -429,24 +428,45 @@ docker run -d --name knowhub --restart unless-stopped \
 ```
 knowhub/
 ├── backend/
-│   ├── main.py           # 应用入口
-│   ├── config.py         # 配置管理
-│   ├── database.py       # 数据库
-│   ├── ai_services.py    # AI 服务
-│   ├── file_services.py  # 文件处理
-│   ├── github_stars.py   # GitHub 集成
-│   ├── wechat_agent.py   # 微信机器人
-│   ├── reminder_worker.py # 定时任务
-│   └── routers/          # API 路由
+│   ├── main.py            # 应用入口、middleware、生命周期
+│   ├── config.py          # 配置管理、密钥处理
+│   ├── database.py        # SQLite 连接、schema migration
+│   ├── ai_services.py     # AI 摘要、embedding、混合搜索
+│   ├── file_services.py   # 文件处理、MarkItDown 转换
+│   ├── github_stars.py    # GitHub API 客户端、同步引擎
+│   ├── wechat_agent.py    # 微信消息处理、ReAct 工具循环
+│   ├── weclaw_bot.py      # iLink API 客户端（微信底层通信）
+│   ├── reminder_worker.py # 定时任务调度、报告生成
+│   ├── dropzone_worker.py # 文件夹监控、自动入库
+│   ├── gitmem0_client.py  # 记忆系统客户端
+│   ├── tools.py           # AI 工具定义（function calling）
+│   ├── qmd/               # 向量搜索引擎
+│   │   ├── models.py      # Embedding 模型
+│   │   ├── store.py       # 向量存储与检索
+│   │   └── chunker.py     # 文档分块
+│   └── routers/           # API 路由
+│       ├── items.py       # 文件/文本 CRUD、搜索
+│       ├── ask.py         # RAG 问答
+│       ├── settings.py    # 系统设置、登录
+│       ├── github.py      # GitHub Stars/Releases/Discover
+│       ├── collections.py # 收藏集 CRUD
+│       ├── system.py      # 提醒、报告、备份、图谱
+│       └── events.py      # SSE 事件流
 ├── frontend/
-│   ├── src/
-│   │   ├── App.tsx       # 主组件
-│   │   ├── types.ts      # 类型定义
-│   │   └── components/   # 组件
-│   └── dist/             # 构建产物
-├── requirements.txt      # Python 依赖
-├── Dockerfile           # Docker 配置
-└── README.md            # 本文件
+│   └── src/
+│       ├── App.tsx        # 主应用组件
+│       ├── types.ts       # TypeScript 接口定义
+│       ├── sanitize.ts    # DOMPurify XSS 防护
+│       └── components/
+│           ├── AIChat.tsx       # AI 对话组件
+│           ├── READMEView.tsx   # GitHub README 渲染
+│           └── ErrorBoundary.tsx # 错误边界
+├── tests/                 # 测试用例
+├── requirements.txt       # Python 依赖
+├── Dockerfile             # 应用镜像
+├── Dockerfile.base        # 基础镜像（含 AI 模型）
+├── docker-compose.yml     # Docker Compose 配置
+└── README.md
 ```
 
 ### 运行测试
