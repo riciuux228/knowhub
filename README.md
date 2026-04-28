@@ -58,6 +58,12 @@ KnowHub 就是为了解决这些问题而生的。它把你的所有知识碎片
 
 <p align="center">
   <img src="screenshots/Github Stars.png" width="90%" alt="GitHub Stars 管理">
+  <img src="screenshots/GIthubStarsManage.png" width="90%" alt="GitHub Stars 分类管理">
+</p>
+
+<p align="center">
+  <img src="screenshots/StarsProjectAbstract.png" width="45%" alt="仓库摘要">
+  <img src="screenshots/StarProjectReadme.png" width="45%" alt="仓库 README">
 </p>
 
 ### 知识图谱
@@ -75,6 +81,14 @@ KnowHub 就是为了解决这些问题而生的。它把你的所有知识碎片
 - API 速率限制防止滥用
 - 文件上传大小限制（200MB）
 - 敏感配置自动脱敏
+
+### 主题切换
+- 支持深色/浅色主题
+- 自动跟随系统偏好
+
+<p align="center">
+  <img src="screenshots/白色主题.png" width="90%" alt="浅色主题">
+</p>
 
 ---
 
