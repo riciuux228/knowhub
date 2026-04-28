@@ -19,6 +19,12 @@
 
 ---
 
+<p align="center">
+  <img src="screenshots/Home.png" width="90%" alt="KnowHub 知识库首页">
+</p>
+
+---
+
 ## 为什么选择 KnowHub？
 
 你是否遇到过这些问题：
@@ -49,6 +55,10 @@ KnowHub 就是为了解决这些问题而生的。它把你的所有知识碎片
 - 智能分类：按 Web/移动/桌面/AI 等类别自动归类
 - Release 追踪：订阅仓库，自动追踪新版本发布
 - 趋势发现：查看 GitHub Trending、热门仓库、按主题搜索
+
+<p align="center">
+  <img src="screenshots/Github Stars.png" width="90%" alt="GitHub Stars 管理">
+</p>
 
 ### 知识图谱
 - 可视化展示知识之间的关联
@@ -135,6 +145,10 @@ npm run dev
 | **AI Model** | 模型名称 | `deepseek-chat` |
 | **系统密码** | 访问密码（留空=无密码） | `mypassword` |
 
+<p align="center">
+  <img src="screenshots/setting.png" width="90%" alt="设置页面">
+</p>
+
 ### 推荐的 AI 模型配置
 
 #### DeepSeek（推荐，性价比高）
@@ -205,6 +219,11 @@ python3 backend/main.py
 - 设提醒：`提醒我 xxx`
 - 自然语言问答：任何问题都会基于你的知识库回答
 
+<p align="center">
+  <img src="screenshots/微信聊天.png" width="400" alt="微信聊天">
+  <img src="screenshots/WebChat.png" width="400" alt="WebChat 界面">
+</p>
+
 ### Webhook 鉴权（可选）
 
 如果需要通过外部系统调用 Webhook，建议设置 Token：
@@ -262,6 +281,19 @@ python3 backend/main.py
 - **Trending**: GitHub 官方趋势
 - **热门**: 高星仓库
 - **按主题搜索**: 输入关键词搜索相关仓库
+
+<p align="center">
+  <img src="screenshots/GithubTrending.png" width="90%" alt="GitHub Trending 趋势发现">
+</p>
+
+#### Release 追踪
+- 订阅感兴趣的仓库
+- 自动追踪新版本发布
+- 查看更新日志和下载资源
+
+<p align="center">
+  <img src="screenshots/Releases.png" width="90%" alt="Release 追踪">
+</p>
 
 ### AI 对话
 
