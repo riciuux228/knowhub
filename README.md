@@ -475,5 +475,5 @@ python -m pytest tests/ -v
 - [sentence-transformers](https://www.sbert.net/) - 向量嵌入
 - [DOMPurify](https://github.com/cure53/DOMPurify) - XSS 防护
 - [Force Graph](https://github.com/vasturiano/force-graph) - 知识图谱可视化
-- [GitHubStarsManage](https://github.com/your-zhao/GitHubStarsManage) - GitHub Stars 管理灵感
+- [GithubStarsManager](https://github.com/AmintaCCCP/GithubStarsManager) - GitHub Stars 管理灵感
 - [MarkItDown](https://github.com/microsoft/markitdown) - 文件转 Markdown 提取
