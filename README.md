@@ -74,7 +74,7 @@ KnowHub 就是为了解决这些问题而生的。它把你的所有知识碎片
 
 ```bash
 # 1. 克隆项目
-git clone https://github.com/你的用户名/knowhub.git
+git clone https://github.com/riciuux228/knowhub.git
 cd knowhub
 
 # 2. 构建基础镜像（首次需要，包含 AI 模型，约 5 分钟）
@@ -101,7 +101,7 @@ open http://localhost:8765
 
 ```bash
 # 1. 克隆项目
-git clone https://github.com/你的用户名/knowhub.git
+git clone https://github.com/riciuux228/knowhub.git
 cd knowhub
 
 # 2. 安装后端依赖
