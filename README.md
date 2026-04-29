@@ -172,6 +172,10 @@ AI Model: deepseek-chat
 AI API Key: sk-xxxxxxxxxx
 ```
 
+<p align="center">
+  <img src="screenshots/deepseek.jpg" width="90%" alt="DeepSeek 配置">
+</p>
+
 #### OpenAI
 ```
 AI Base URL: https://api.openai.com/v1
